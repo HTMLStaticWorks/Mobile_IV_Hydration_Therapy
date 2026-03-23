@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Blog | HydraCore</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .blog-card img { width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .blog-card { 
+      padding: 0; 
+      box-shadow: var(--shadow-sm); 
+      border: 1px solid var(--bg-border); 
+      background: var(--bg-surface); 
+      border-radius: var(--radius-md); 
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .blog-content { 
+      padding: 1.5rem; 
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="nav-brand">
+        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+          <path d="M12 2v20"></path>
+        </svg>
+        HydraCore
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li class="dropdown">
+          <a href="index.html" class="nav-link d-flex align-items-center">
+            Home
+            <svg class="dropdown-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1 (Default)</a>
+            <a href="home-2.html" class="dropdown-item">Home 2 (Alternative)</a>
+          </div>
+        </li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="blog.html" class="nav-link active">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <div class="nav-actions" id="nav-actions">
+          <button id="rtl-toggle" class="btn btn-outline btn-sm me-2" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; height: auto;">RTL</button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          </button>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="section-padding" style="margin-top: 80px; text-align: center;">
+    <div class="container fade-up">
+      <h1 class="section-title">The Wellness Source</h1>
+      <p class="section-subtitle">Clinical insights, nutritional advice, and recovery science.</p>
+    </div>
+  </header>
+
+  <section class="section-padding bg-soft">
+    <div class="container stagger-container">
+      <div class="row g-4">
+        
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="blog-card">
+            <img src="assets/images/blog-1.png" alt="Blog 1">
+            <div class="blog-content">
+              <span class="badge">Hydration</span>
+              <h4 class="mt-2 text-primary">Why Drinking Water Isn't Enough for Deep Dehydration</h4>
+              <p class="text-muted mt-2 mb-3">Exploring the gastrointestinal limits of fluid absorption and how IV therapy bypasses the gut entirely.</p>
+              <div class="mt-auto">
+                <a href="blog-details-1.html" class="text-primary font-weight-bold">Read Article &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600" alt="Blog 2">
+            <div class="blog-content">
+              <span class="badge">Immunity</span>
+              <h4 class="mt-2 text-primary">The Synergy of High-Dose Vitamin C and Zinc</h4>
+              <p class="text-muted mt-2 mb-3">A breakdown of why cellular immunity thrives when these two essential micro-nutrients are paired together.</p>
+              <div class="mt-auto">
+                <a href="blog-details-2.html" class="text-primary font-weight-bold">Read Article &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Blog 3">
+            <div class="blog-content">
+              <span class="badge">Recovery</span>
+              <h4 class="mt-2 text-primary">Marathon Prep: Optimal NAD+ Loading Protocols</h4>
+              <p class="text-muted mt-2 mb-3">Why elite athletes are turning to cellular regeneration therapies before their biggest endurance races.</p>
+              <div class="mt-auto">
+                <a href="blog-details-3.html" class="text-primary font-weight-bold">Read Article &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="blog-card">
+            <img src="assets/images/blog-4.png" alt="Glutathione Science">
+            <div class="blog-content">
+              <span class="badge">Nutrition</span>
+              <h4 class="mt-2 text-primary">The Master Antioxidant: Why Glutathione Matters</h4>
+              <p class="text-muted mt-2 mb-3">Understanding the cellular mechanisms of Glutathione and how systemic IV delivery outperforms oral supplementation for detoxification.</p>
+              <div class="mt-auto">
+                <a href="blog-details-4.html" class="text-primary font-weight-bold">Read Article &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="blog-card">
+            <img src="assets/images/blog-5.png" alt="Travel Recovery">
+            <div class="blog-content">
+              <span class="badge">Travel</span>
+              <h4 class="mt-2 text-primary">Post-Travel Recovery & Circadian Syncing</h4>
+              <p class="text-muted mt-2 mb-3">How clinicians use electrolyte loading and specific nutrient infusions to combat jet lag and reset internal clocks after international travel.</p>
+              <div class="mt-auto">
+                <a href="blog-details-5.html" class="text-primary font-weight-bold">Read Article &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="blog-card">
+            <img src="assets/images/blog-6.png" alt="Migraine Therapy">
+            <div class="blog-content">
+              <span class="badge">Wellness</span>
+              <h4 class="mt-2 text-primary">Migraine Management: Rapid Intravenous Relief</h4>
+              <p class="text-muted mt-2 mb-3">A clinical overview of the 'migraine cocktail' and why bypassing the gastric system is the golden standard for aborting acute attacks.</p>
+              <div class="mt-auto">
+                <a href="blog-details-6.html" class="text-primary font-weight-bold">Read Article &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top row">
+        <div class="footer-col col-lg-4">
+          <a href="index.html" class="footer-brand">
+            <svg class="brand-icon" style="color: var(--primary); vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+              <path d="M12 2v20"></path>
+            </svg>
+            HydraCore
+          </a>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Clinical-grade mobile IV therapy delivered to your home by certified registered nurses.</p>
+        </div>
+        
+        <div class="footer-col col-lg-2">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Hydration Drip</a></li>
+            <li><a href="services.html">Hangover Recovery</a></li>
+            <li><a href="services.html">Immune Plus</a></li>
+            <li><a href="services.html">Weight Loss</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-2">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="blog.html">Wellness Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-4">
+          <h4>Subscribe for Wellness Tips</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Join our newsletter for health insights and exclusive offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="form-input" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 HydraCore Mobile IV Therapy. All rights reserved.</p>
+        <div class="d-flex gap-2">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

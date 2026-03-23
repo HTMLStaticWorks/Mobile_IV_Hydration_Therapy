@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | HydraCore IV Therapy</title>
+  
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .page-header {
+      background-color: var(--bg-soft);
+      padding: 6rem 0 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--bg-border);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="nav-brand">
+        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+          <path d="M12 2v20"></path>
+        </svg>
+        HydraCore
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li class="dropdown">
+          <a href="index.html" class="nav-link d-flex align-items-center">
+            Home
+            <svg class="dropdown-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1 (Default)</a>
+            <a href="home-2.html" class="dropdown-item">Home 2 (Alternative)</a>
+          </div>
+        </li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <div class="nav-actions" id="nav-actions">
+          <button id="rtl-toggle" class="btn btn-outline btn-sm me-2" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; height: auto;">RTL</button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <!-- Icon initialized by JS -->
+          </button>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header text-center" style="margin-top: 80px;">
+    <div class="container fade-up">
+      <h1 class="section-title">Our IV Therapy Treatments</h1>
+      <p class="section-subtitle">Targeted formulations delivered straight to your bloodstream for maximum 100% absorption.</p>
+    </div>
+  </header>
+
+  <!-- Services Grid -->
+  <section class="section-padding">
+    <div class="container stagger-container">
+      <div class="row g-4 justify-content-center">
+        
+        <!-- Service 1 -->
+        <div class="col-lg-4 col-md-6 stagger-item d-flex">
+          <div class="glass-card hover-lift h-100 d-flex flex-column align-items-center text-center w-100">
+            <div class="service-icon mb-3" style="color: var(--primary);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M7 6h10"></path><path d="M7 18h10"></path></svg>
+            </div>
+            <h3>Hydration Basics</h3>
+            <p class="mt-2 mb-4 flex-grow-1">Pure normal saline (1L) to treat dehydration from travel, illness, or daily exertion.</p>
+            <a href="service-hydration.html" class="btn btn-outline w-100">View Details</a>
+          </div>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="col-lg-4 col-md-6 stagger-item d-flex">
+          <div class="glass-card hover-lift h-100 d-flex flex-column align-items-center text-center w-100">
+            <div class="service-icon mb-3" style="color: var(--accent);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <h3>Hangover Rescue</h3>
+            <p class="mt-2 mb-4 flex-grow-1">Saline packed with B-Complex, B12, Zofran (anti-nausea), and Toradol (pain relief).</p>
+            <a href="service-hangover.html" class="btn btn-outline w-100">View Details</a>
+          </div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="col-lg-4 col-md-6 stagger-item d-flex">
+          <div class="glass-card hover-lift h-100 d-flex flex-column align-items-center text-center w-100">
+            <div class="service-icon mb-3" style="color: #f59e0b;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+            </div>
+            <h3>Immunity Boost</h3>
+            <p class="mt-2 mb-4 flex-grow-1">High doses of Ascorbic Acid (Vitamin C), Zinc, and B-vitamins designed to supercharge your immune system.</p>
+            <a href="service-immunity.html" class="btn btn-outline w-100">View Details</a>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="col-lg-4 col-md-6 stagger-item d-flex">
+          <div class="glass-card hover-lift h-100 d-flex flex-column align-items-center text-center w-100">
+            <div class="service-icon mb-3" style="color: #8b5cf6;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="6.5"></line></svg>
+            </div>
+            <h3>Beauty & Glow</h3>
+            <p class="mt-2 mb-4 flex-grow-1">Biotin, Glutathione, and Vitamin C for glowing skin, strong nails, and healthy hair.</p>
+            <a href="service-beauty.html" class="btn btn-outline w-100">View Details</a>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="col-lg-4 col-md-6 stagger-item d-flex">
+          <div class="glass-card hover-lift h-100 d-flex flex-column align-items-center text-center w-100">
+            <div class="service-icon mb-3" style="color: #ec4899;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            </div>
+            <h3>Weight Loss & Energy</h3>
+            <p class="mt-2 mb-4 flex-grow-1">Fat-burning amino blend (MIC) bundled with B12 for peak natural energy enhancement.</p>
+            <a href="service-energy.html" class="btn btn-outline w-100">View Details</a>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="col-lg-4 col-md-6 stagger-item d-flex">
+          <div class="glass-card hover-lift h-100 d-flex flex-column align-items-center text-center w-100">
+            <div class="service-icon mb-3" style="color: #0ea5e9;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3>Athletic Recovery</h3>
+            <p class="mt-2 mb-4 flex-grow-1">Amino acids and muscular repair complexes designed for marathon runners, CrossFit, and endurance sports.</p>
+            <a href="service-athletic.html" class="btn btn-outline w-100">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding text-center" style="background-color: var(--primary); color: #fff;">
+    <div class="container fade-up">
+      <h2 style="color: #fff;" class="section-title">Not sure which drip is right for you?</h2>
+      <p style="color: rgba(255,255,255,0.9);" class="section-subtitle">Our medical professionals offer complimentary consultations.</p>
+      <a href="contact.html" class="btn btn-accent btn-lg mt-3" style="color: #fff;">Contact Our Nurses</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top row">
+        <div class="footer-col col-lg-4">
+          <a href="index.html" class="footer-brand">
+            <svg class="brand-icon" style="color: var(--primary); vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+              <path d="M12 2v20"></path>
+            </svg>
+            HydraCore
+          </a>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Clinical-grade mobile IV therapy delivered to your home by certified registered nurses.</p>
+        </div>
+        
+        <div class="footer-col col-lg-2">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Hydration Drip</a></li>
+            <li><a href="services.html">Hangover Recovery</a></li>
+            <li><a href="services.html">Immune Plus</a></li>
+            <li><a href="services.html">Weight Loss</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-2">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="blog.html">Wellness Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-4">
+          <h4>Subscribe for Wellness Tips</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Join our newsletter for health insights and exclusive offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="form-input" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 HydraCore Mobile IV Therapy. All rights reserved.</p>
+        <div class="d-flex gap-2">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

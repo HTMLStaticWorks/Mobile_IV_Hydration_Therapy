@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard | HydraCore</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .dashboard-layout { display: flex; min-height: 100vh; margin-top: 80px; }
+    .sidebar { width: 280px; background: var(--bg-surface); border-right: 1px solid var(--bg-border); padding: 2rem; }
+    .main-content { flex: 1; padding: 3rem; background: var(--bg-main); }
+    .nav-sidebar { display: flex; flex-direction: column; gap: 0.5rem; }
+    .nav-sidebar-link { padding: 0.75rem 1rem; border-radius: var(--radius-md); color: var(--text-secondary); display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s ease; }
+    .nav-sidebar-link:hover, .nav-sidebar-link.active { background: var(--bg-soft); color: var(--primary); }
+    .status-badge { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .status-upcoming { background: rgba(34, 197, 94, 0.1); color: var(--accent); }
+    
+    @media (max-width: 991px) {
+      .dashboard-layout { flex-direction: column; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--bg-border); padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar (Compact for Dashboard) -->
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="nav-brand">
+        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+          <path d="M12 2v20"></path>
+        </svg>
+        HydraCore
+      </a>
+      
+      <div class="nav-actions d-flex align-items-center gap-3">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="nav-sidebar">
+        <a href="#" class="nav-sidebar-link active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Overview
+        </a>
+        <a href="#" class="nav-sidebar-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Book Appointment
+        </a>
+        <a href="#" class="nav-sidebar-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="m3.34 19 9.39-9.39"></path><path d="M5 21 21 5"></path><path d="M19 3 5 17"></path><path d="m14 8 4 4"></path></svg>
+          Vitamin Blends
+        </a>
+        <a href="#" class="nav-sidebar-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          My Profile
+        </a>
+        <a href="#" class="nav-sidebar-link mt-auto" style="color: #ef4444;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="fade-up">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+          <div>
+            <h1 class="mb-1">Hello, Jane Doe</h1>
+            <p class="text-secondary mb-0">You have 1 upcoming session this week.</p>
+          </div>
+          <button class="btn btn-primary">Book New Drip</button>
+        </div>
+
+        <div class="row g-4 mb-5">
+          <div class="col-md-4">
+            <div class="glass-card">
+              <span class="text-muted small">Next Session</span>
+              <h3 class="mt-2">March 26, 2:00 PM</h3>
+              <p class="mb-0 mt-3"><span class="status-badge status-upcoming">Waitlist Confirmed</span></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card">
+              <span class="text-muted small">Total Hydrations</span>
+              <h3 class="mt-2">12 Sessions</h3>
+              <p class="mb-0 mt-3">Elite Status Member</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card">
+              <span class="text-muted small">Reward Points</span>
+              <h3 class="mt-2">2,450 pts</h3>
+              <p class="mb-0 mt-3 text-primary">Redeem for free add-on</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="glass-card mb-4">
+              <h4 class="mb-4">Recent Health Profile</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="text-muted small d-block mb-1">Blood Type</label>
+                  <p class="font-weight-bold">O Positive (Confirmed)</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="text-muted small d-block mb-1">Known Allergies</label>
+                  <p class="font-weight-bold">None Reported</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="text-muted small d-block mb-1">Primary Goal</label>
+                  <p class="font-weight-bold">Athletic Recovery & Focus</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="text-muted small d-block mb-1">Weight</label>
+                  <p class="font-weight-bold">145 lbs</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <h4 class="mb-4">Quick Book Blend</h4>
+              <div class="d-flex flex-column gap-3">
+                 <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
+                    <div class="d-flex align-items-center gap-3">
+                       <div style="background: var(--primary); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                       </div>
+                       <div>
+                          <h6 class="mb-0">Immune Defense+ Mix</h6>
+                          <span class="small text-muted">Vit C, Zinc, B-Complex</span>
+                       </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
+                 </div>
+                 <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
+                    <div class="d-flex align-items-center gap-3">
+                       <div style="background: var(--accent); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                       </div>
+                       <div>
+                          <h6 class="mb-0">Executive Hydration</h6>
+                          <span class="small text-muted">Saline, Glutathione, NAD+</span>
+                       </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
+                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="glass-card h-100">
+               <h4 class="mb-4">My Nursing Team</h4>
+               <div class="d-flex flex-column gap-4">
+                  <div class="d-flex align-items-center gap-3">
+                     <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-soft); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=200" alt="Nurse Sarah">
+                     </div>
+                     <div>
+                        <h6 class="mb-0">Nurse Sarah H.</h6>
+                        <span class="small text-muted">Primary Specialist</span>
+                     </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-3">
+                     <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-soft); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200" alt="Dr Michael">
+                     </div>
+                     <div>
+                        <h6 class="mb-0">Dr. Michael V.</h6>
+                        <span class="small text-muted">Medical Director</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="mt-5 pt-4" style="border-top: 1px solid var(--bg-border);">
+                  <h5>Help & Support</h5>
+                  <p class="small text-muted">Available 24/7 for medical dispatch.</p>
+                  <a href="contact.html" class="btn btn-outline w-100 mt-2">Chat with Nurse</a>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

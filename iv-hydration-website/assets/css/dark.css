@@ -1,0 +1,39 @@
+/* Dark mode specific overrides outside of CSS variables, if any are needed */
+
+html[data-theme="dark"] {
+  /* Ensure all dark mode defaults apply cleanly */
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] img {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+html[data-theme="dark"] img:hover {
+  opacity: 1;
+}
+
+/* Specific component tweaks in dark mode */
+html[data-theme="dark"] .section-title {
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+html[data-theme="dark"] .glass-card {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Form input dark mode adjustments */
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] select:focus {
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* Service icon glowing effect in dark mode */
+html[data-theme="dark"] .service-icon {
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+}

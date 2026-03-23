@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works | HydraCore</title>
+  
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .step-img { border-radius: var(--radius-lg); width: 100%; height: 300px; object-fit: cover; }
+    .step-block { margin-bottom: 5rem; }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="nav-brand">
+        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+          <path d="M12 2v20"></path>
+        </svg>
+        HydraCore
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li class="dropdown">
+          <a href="index.html" class="nav-link d-flex align-items-center">
+            Home
+            <svg class="dropdown-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1 (Default)</a>
+            <a href="home-2.html" class="dropdown-item">Home 2 (Alternative)</a>
+          </div>
+        </li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="how-it-works.html" class="nav-link active">How It Works</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <div class="nav-actions" id="nav-actions">
+          <button id="rtl-toggle" class="btn btn-outline btn-sm me-2" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; height: auto;">RTL</button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          </button>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="section-padding" style="margin-top: 80px; background-color: var(--bg-soft); text-align: center;">
+    <div class="container fade-up">
+      <h1 class="section-title">The Path to Wellness</h1>
+      <p class="section-subtitle">A seamless, clinically sound process directly inside your space.</p>
+    </div>
+  </header>
+
+  <section class="section-padding">
+    <div class="container">
+      
+      <!-- Step 1 -->
+      <div class="row align-items-center step-block fade-up">
+        <div class="col-md-6 order-2 order-md-1">
+          <div class="text-primary mb-2" style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; opacity: 0.5;">01.</div>
+          <h2 class="mb-3">Schedule Your Appointment</h2>
+          <p class="text-secondary" style="font-size: 1.1rem;">Select your IV therapy based on your current health needs via our secure platform. Choose a date, time, and location—whether that’s your home, your office, or a hotel room. Immediate dispatches are available depending on nurse proximity.</p>
+        </div>
+        <div class="col-md-5 offset-md-1 order-1 order-md-2 mb-4 mb-md-0">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" class="step-img" alt="Booking on tablet">
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="row align-items-center step-block fade-up">
+        <div class="col-md-5 mb-4 mb-md-0">
+          <img src="assets/images/nurse-arrival.png" class="step-img" alt="Nurse arriving">
+        </div>
+        <div class="col-md-6 offset-md-1">
+          <div class="text-primary mb-2" style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; opacity: 0.5;">02.</div>
+          <h2 class="mb-3">Nurse Arrival & Consult</h2>
+          <p class="text-secondary" style="font-size: 1.1rem;">A fully licensed Registered Nurse will arrive with pharmaceutical-grade supplies. They will perform a brief health assessment, check your vitals, and ensure the chosen IV drip is optimal for your body.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="row align-items-center step-block fade-up" style="margin-bottom: 0;">
+        <div class="col-md-6 order-2 order-md-1">
+          <div class="text-primary mb-2" style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; opacity: 0.5;">03.</div>
+          <h2 class="mb-3">Hydrate & Recover</h2>
+          <p class="text-secondary" style="font-size: 1.1rem;">Sit back on your favorite couch or bed. The administration takes approximately 30-45 minutes. Because the vitamins are delivered directly into your bloodstream, you will feel the rejuvenating effects almost instantly.</p>
+        </div>
+        <div class="col-md-5 offset-md-1 order-1 order-md-2 mb-4 mb-md-0">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" class="step-img" alt="Relaxing at home">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding" style="background-color: var(--bg-soft);">
+    <div class="container fade-up text-center">
+      <h2 class="section-title mb-5">Frequently Asked Questions</h2>
+      <div class="row text-start g-4 justify-content-center">
+        <div class="col-lg-8">
+          
+          <div class="faq-item mb-3">
+            <div class="faq-header glass-card d-flex justify-content-between align-items-center" style="cursor: pointer; padding: 1.5rem 2rem;">
+              <h4 class="mb-0">Does IV Therapy hurt?</h4>
+              <div class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+              <div class="p-4">
+                <p class="text-muted">Our nurses are experts in venipuncture. Some patients feel a tiny pinch during insertion, but the therapy itself is painless and most patients find it highly relaxing.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item mb-3">
+            <div class="faq-header glass-card d-flex justify-content-between align-items-center" style="cursor: pointer; padding: 1.5rem 2rem;">
+              <h4 class="mb-0">How closely regulated are the vitamins?</h4>
+              <div class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+              <div class="p-4">
+                <p class="text-muted">All our formulations are sourced from FDA-approved 503B compounding pharmacies and overseen by our Medical Director, a board-certified physician.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header glass-card d-flex justify-content-between align-items-center" style="cursor: pointer; padding: 1.5rem 2rem;">
+              <h4 class="mb-0">Can I customize my IV bag?</h4>
+              <div class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+              <div class="p-4">
+                <p class="text-muted">Absolutely. Our Registered Nurses offer a pre-infusion consultation where you can elect to add extra vitamins such as Zofran, Toradol, B12, or Glutathione.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top row">
+        <div class="footer-col col-lg-4">
+          <a href="index.html" class="footer-brand">
+            <svg class="brand-icon" style="color: var(--primary); vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+              <path d="M12 2v20"></path>
+            </svg>
+            HydraCore
+          </a>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Clinical-grade mobile IV therapy delivered to your home by certified registered nurses.</p>
+        </div>
+        
+        <div class="footer-col col-lg-2">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Hydration Drip</a></li>
+            <li><a href="services.html">Hangover Recovery</a></li>
+            <li><a href="services.html">Immune Plus</a></li>
+            <li><a href="services.html">Weight Loss</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-2">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="blog.html">Wellness Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-4">
+          <h4>Subscribe for Wellness Tips</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Join our newsletter for health insights and exclusive offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="form-input" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 HydraCore Mobile IV Therapy. All rights reserved.</p>
+        <div class="d-flex gap-2">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

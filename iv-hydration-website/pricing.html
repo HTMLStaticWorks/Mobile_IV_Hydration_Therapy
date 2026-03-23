@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | HydraCore</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .pricing-card { text-align: center; border: 2px solid transparent; }
+    .pricing-card.popular { border-color: var(--primary); transform: scale(1.05); }
+    html[data-theme="dark"] .pricing-card.popular { border-color: var(--primary); transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
+    .price-value { font-size: 3.5rem; font-weight: 800; color: var(--text-primary); font-family: var(--font-heading); }
+    .price-currency { font-size: 1.5rem; vertical-align: super; }
+    .pricing-features { text-align: left; margin: 2rem 0; }
+    .pricing-features li { padding: 0.5rem 0; border-bottom: 1px solid var(--bg-border); }
+    .pricing-features li:last-child { border: none; }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="nav-brand">
+        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+          <path d="M12 2v20"></path>
+        </svg>
+        HydraCore
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li class="dropdown">
+          <a href="index.html" class="nav-link d-flex align-items-center">
+            Home
+            <svg class="dropdown-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1 (Default)</a>
+            <a href="home-2.html" class="dropdown-item">Home 2 (Alternative)</a>
+          </div>
+        </li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <div class="nav-actions" id="nav-actions">
+          <button id="rtl-toggle" class="btn btn-outline btn-sm me-2" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; height: auto;">RTL</button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          </button>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="section-padding" style="margin-top: 80px; text-align: center; border-bottom: 1px solid var(--bg-border);">
+    <div class="container fade-up">
+      <h1 class="section-title">Transparent Wellness</h1>
+      <p class="section-subtitle">No hidden travel fees. The price you see includes dispatch, nursing administration, and full clinical care.</p>
+    </div>
+  </header>
+
+  <section class="section-padding bg-main">
+    <div class="container stagger-container">
+      <div class="row g-4 justify-content-center align-items-center">
+        
+        <!-- Tier 1 -->
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="glass-card pricing-card">
+            <h3>Hydration Basics</h3>
+            <p class="text-muted">Pure normal saline formulation</p>
+            <div class="my-3">
+              <span class="price-currency">$</span><span class="price-value">125</span>
+            </div>
+            <a href="signup.html" class="btn btn-outline w-100">Select Plan</a>
+            <ul class="pricing-features">
+              <li>✔️ In-Home Dispatch</li>
+              <li>✔️ 1000ml Normal Saline</li>
+              <li>✔️ RN Administration</li>
+              <li>❌ Extra Vitamins</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="glass-card pricing-card popular">
+            <span class="badge" style="background-color: var(--primary); color: white; display:block; margin: -1.5rem auto 1rem; width: fit-content; transform: translateY(-15px);">Most Popular</span>
+            <h3>Hangover / Immunity</h3>
+            <p class="text-muted">Max formulated therapeutic blends</p>
+            <div class="my-3">
+              <span class="price-currency">$</span><span class="price-value">195</span>
+            </div>
+            <a href="signup.html" class="btn btn-primary w-100">Select Plan</a>
+            <ul class="pricing-features">
+              <li>✔️ In-Home Dispatch</li>
+              <li>✔️ 1000ml Normal Saline</li>
+              <li>✔️ RN Administration</li>
+              <li>✔️ Up to 3 Included Vitamins</li>
+              <li>✔️ Zofran / Toradol inclusive</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="col-lg-4 col-md-6 stagger-item">
+          <div class="glass-card pricing-card">
+            <h3>NAD+ Anti-Aging</h3>
+            <p class="text-muted">Cellular regeneration drip</p>
+            <div class="my-3">
+              <span class="price-currency">$</span><span class="price-value">395</span>
+            </div>
+            <a href="signup.html" class="btn btn-outline w-100">Select Plan</a>
+            <ul class="pricing-features">
+              <li>✔️ Premium Dispatch</li>
+              <li>✔️ 500mg NAD+ Protocol</li>
+              <li>✔️ Extended RN Supervision</li>
+              <li>✔️ Glutathione finish included</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top row">
+        <div class="footer-col col-lg-4">
+          <a href="index.html" class="footer-brand">
+            <svg class="brand-icon" style="color: var(--primary); vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 2 4 10.5L22 17l-9 2-8-2 2-4.5L12 2Z"></path>
+              <path d="M12 2v20"></path>
+            </svg>
+            HydraCore
+          </a>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Clinical-grade mobile IV therapy delivered to your home by certified registered nurses.</p>
+        </div>
+        
+        <div class="footer-col col-lg-2">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Hydration Drip</a></li>
+            <li><a href="services.html">Hangover Recovery</a></li>
+            <li><a href="services.html">Immune Plus</a></li>
+            <li><a href="services.html">Weight Loss</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-2">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="blog.html">Wellness Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col col-lg-4">
+          <h4>Subscribe for Wellness Tips</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Join our newsletter for health insights and exclusive offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="form-input" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 HydraCore Mobile IV Therapy. All rights reserved.</p>
+        <div class="d-flex gap-2">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
