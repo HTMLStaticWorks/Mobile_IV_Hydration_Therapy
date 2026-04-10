@@ -339,11 +339,27 @@ html[data-theme="dark"] .navbar {
 
 .mobile-menu-btn {
   display: none;
-  background: none;
-  border: none;
+  background: var(--bg-soft);
+  border: 1px solid var(--bg-border);
   color: var(--text-primary);
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-border);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.mobile-menu-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* Dropdown */

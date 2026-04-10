@@ -11,24 +11,52 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <style>
     .dashboard-layout { display: flex; min-height: 100vh; margin-top: 80px; }
-    .sidebar { width: 280px; background: var(--bg-surface); border-right: 1px solid var(--bg-border); padding: 2rem; position: relative; transition: all 0.3s ease; }
+    .sidebar { 
+      width: 280px; 
+      background: var(--bg-surface); 
+      border-right: 1px solid var(--bg-border); 
+      padding: 2rem; 
+      position: sticky; 
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+      transition: all 0.3s ease; 
+    }
     .main-content { flex: 1; padding: 3rem; background: var(--bg-main); transition: all 0.3s ease; }
-    .nav-sidebar { display: flex; flex-direction: column; gap: 0.5rem; }
+    .nav-sidebar { display: flex; flex-direction: column; gap: 0.5rem; height: 100%; }
     .nav-sidebar-link { padding: 0.75rem 1rem; border-radius: var(--radius-md); color: var(--text-secondary); display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s ease; }
     .nav-sidebar-link:hover, .nav-sidebar-link.active { background: var(--bg-soft); color: var(--primary); }
     .status-badge { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
     .status-upcoming { background: rgba(34, 197, 94, 0.1); color: var(--accent); }
     
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1050;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .sidebar-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+    
     @media (max-width: 1024px) {
       .sidebar {
         position: fixed;
         left: -100%;
-        top: 80px;
-        height: calc(100vh - 80px);
-        z-index: 1000;
+        top: 0;
+        height: 100vh;
+        z-index: 1100;
         box-shadow: var(--shadow-lg);
         width: 280px !important;
-        padding-top: 3rem;
+        padding-top: 5rem;
       }
       .sidebar.active {
         left: 0;
@@ -37,7 +65,10 @@
         padding: 1.5rem;
       }
       .mobile-sidebar-toggle {
-        display: block !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        z-index: 1200;
       }
       .dashboard-layout {
         display: block;
@@ -45,11 +76,33 @@
     }
     .mobile-sidebar-toggle {
       display: none;
-      background: none;
-      border: none;
+      background: var(--bg-soft);
+      border: 1px solid var(--bg-border);
       color: var(--text-primary);
-      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mobile-sidebar-toggle:hover {
+      background: var(--bg-border);
+      color: var(--primary);
+    }
+    .profile-btn { text-decoration: none; transition: opacity 0.2s ease; }
+    .profile-btn:hover { opacity: 0.8; }
+    .profile-avatar { 
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%; 
+      background: var(--primary); 
+      color: white; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-weight: 700; 
+      font-size: 0.9rem;
+      border: 2px solid var(--bg-border);
     }
   </style>
 </head>
@@ -67,7 +120,9 @@
       </a>
       
       <div class="nav-actions d-flex align-items-center gap-3">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"></button>
+        <a href="#" class="profile-btn d-flex align-items-center" aria-label="View Profile">
+          <div class="profile-avatar">JD</div>
+        </a>
         <button id="sidebar-toggle" class="mobile-sidebar-toggle" aria-label="Toggle Sidebar">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
@@ -94,7 +149,16 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           My Profile
         </a>
-        <a href="index.html" class="nav-sidebar-link mt-auto" style="color: #ef4444;">
+        
+        <!-- Theme Toggle in Sidebar -->
+        <button id="theme-toggle" class="nav-sidebar-link" style="background: none; border: none; width: 100%; cursor: pointer;">
+          <div class="d-flex align-items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            Switch Theme
+          </div>
+        </button>
+
+        <a href="index.html" class="nav-sidebar-link mt-auto">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
           Logout
         </a>
@@ -136,23 +200,23 @@
         </div>
 
         <div class="row g-4">
-          <div class="col-lg-8">
+          <div class="col-lg-12">
             <div class="glass-card mb-4">
               <h4 class="mb-4">Recent Health Profile</h4>
               <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <label class="text-muted small d-block mb-1">Blood Type</label>
                   <p class="font-weight-bold">O Positive (Confirmed)</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <label class="text-muted small d-block mb-1">Known Allergies</label>
                   <p class="font-weight-bold">None Reported</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <label class="text-muted small d-block mb-1">Primary Goal</label>
                   <p class="font-weight-bold">Athletic Recovery & Focus</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <label class="text-muted small d-block mb-1">Weight</label>
                   <p class="font-weight-bold">145 lbs</p>
                 </div>
@@ -161,69 +225,44 @@
 
             <div class="glass-card">
               <h4 class="mb-4">Quick Book Blend</h4>
-              <div class="d-flex flex-column gap-3">
-                 <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
-                    <div class="d-flex align-items-center gap-3">
-                       <div style="background: var(--primary); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <div class="row g-3">
+                 <div class="col-md-6">
+                    <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
+                       <div class="d-flex align-items-center gap-3">
+                          <div style="background: var(--primary); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                          </div>
+                          <div>
+                             <h6 class="mb-0">Immune Defense+ Mix</h6>
+                             <span class="small text-muted">Vit C, Zinc, B-Complex</span>
+                          </div>
                        </div>
-                       <div>
-                          <h6 class="mb-0">Immune Defense+ Mix</h6>
-                          <span class="small text-muted">Vit C, Zinc, B-Complex</span>
-                       </div>
+                       <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
                     </div>
-                    <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
                  </div>
-                 <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
-                    <div class="d-flex align-items-center gap-3">
-                       <div style="background: var(--accent); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                 <div class="col-md-6">
+                    <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
+                       <div class="d-flex align-items-center gap-3">
+                          <div style="background: var(--accent); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                          </div>
+                          <div>
+                             <h6 class="mb-0">Executive Hydration</h6>
+                             <span class="small text-muted">Saline, Glutathione, NAD+</span>
+                          </div>
                        </div>
-                       <div>
-                          <h6 class="mb-0">Executive Hydration</h6>
-                          <span class="small text-muted">Saline, Glutathione, NAD+</span>
-                       </div>
+                       <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
                     </div>
-                    <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
                  </div>
               </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="glass-card h-100">
-               <h4 class="mb-4">My Nursing Team</h4>
-               <div class="d-flex flex-column gap-4">
-                  <div class="d-flex align-items-center gap-3">
-                     <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-soft); overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=200" alt="Nurse Sarah">
-                     </div>
-                     <div>
-                        <h6 class="mb-0">Nurse Sarah H.</h6>
-                        <span class="small text-muted">Primary Specialist</span>
-                     </div>
-                  </div>
-                  <div class="d-flex align-items-center gap-3">
-                     <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-soft); overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200" alt="Dr Michael">
-                     </div>
-                     <div>
-                        <h6 class="mb-0">Dr. Michael V.</h6>
-                        <span class="small text-muted">Medical Director</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="mt-5 pt-4" style="border-top: 1px solid var(--bg-border);">
-                  <h5>Help & Support</h5>
-                  <p class="small text-muted">Available 24/7 for medical dispatch.</p>
-                  <a href="contact.html" class="btn btn-outline w-100 mt-2">Chat with Nurse</a>
-               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
   </div>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
   <script src="assets/js/gsap.min.js"></script>
   <script src="assets/js/ScrollTrigger.min.js"></script>
@@ -234,22 +273,36 @@
     document.addEventListener('DOMContentLoaded', () => {
       const sidebarToggle = document.getElementById('sidebar-toggle');
       const sidebar = document.querySelector('.sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
       
-      if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', (e) => {
-          e.stopPropagation();
+      if (sidebarToggle && sidebar && overlay) {
+        const toggleSidebar = () => {
           sidebar.classList.toggle('active');
+          overlay.classList.toggle('active');
           
           const isActive = sidebar.classList.contains('active');
           sidebarToggle.innerHTML = isActive 
             ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
             : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+          
+          document.body.style.overflow = isActive ? 'hidden' : '';
+        };
+
+        sidebarToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleSidebar();
         });
         
-        document.addEventListener('click', (e) => {
-          if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
-            sidebar.classList.remove('active');
-            sidebarToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+        overlay.addEventListener('click', () => {
+          if (sidebar.classList.contains('active')) {
+            toggleSidebar();
+          }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            toggleSidebar();
           }
         });
       }
