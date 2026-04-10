@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/dark.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <style>
-    .step-img { border-radius: var(--radius-lg); width: 100%; height: 300px; object-fit: cover; }
+    .step-img { border-radius: var(--radius-lg); width: 100%; height: 450px; object-fit: cover; object-position: center top; }
     .step-block { margin-bottom: 5rem; }
   </style>
 </head>
@@ -52,10 +52,9 @@
         <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
         
         <div class="nav-actions" id="nav-actions">
-          <button id="rtl-toggle" class="btn btn-outline btn-sm me-2" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; height: auto;">RTL</button>
+          <button id="rtl-toggle" class="header-control-btn" aria-label="Toggle RTL">RTL</button>
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
           </button>
-          <a href="login.html" class="btn btn-outline">Login</a>
           <a href="signup.html" class="btn btn-primary">Sign Up</a>
         </div>
       </ul>
@@ -87,7 +86,7 @@
       <!-- Step 2 -->
       <div class="row align-items-center step-block fade-up">
         <div class="col-md-5 mb-4 mb-md-0">
-          <img src="assets/images/nurse-arrival.png" class="step-img" alt="Nurse arriving">
+          <img src="assets/images/nurse-consultation-v2.png" class="step-img" alt="Professional Nurse Arrival and Consultation">
         </div>
         <div class="col-md-6 offset-md-1">
           <div class="text-primary mb-2" style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; opacity: 0.5;">02.</div>

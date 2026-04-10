@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <style>
     .pricing-card { text-align: center; border: 2px solid transparent; }
-    .pricing-card.popular { border-color: var(--primary); transform: scale(1.05); }
-    html[data-theme="dark"] .pricing-card.popular { border-color: var(--primary); transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
+    .pricing-card.popular { border-color: var(--primary); transform: scale(1.05); padding-top: 3.5rem !important; }
+    html[data-theme="dark"] .pricing-card.popular { border-color: var(--primary); transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); padding-top: 3.5rem !important; }
     .price-value { font-size: 3.5rem; font-weight: 800; color: var(--text-primary); font-family: var(--font-heading); }
     .price-currency { font-size: 1.5rem; vertical-align: super; }
     .pricing-features { text-align: left; margin: 2rem 0; }
@@ -57,10 +57,9 @@
         <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
         
         <div class="nav-actions" id="nav-actions">
-          <button id="rtl-toggle" class="btn btn-outline btn-sm me-2" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; height: auto;">RTL</button>
+          <button id="rtl-toggle" class="header-control-btn" aria-label="Toggle RTL">RTL</button>
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
           </button>
-          <a href="login.html" class="btn btn-outline">Login</a>
           <a href="signup.html" class="btn btn-primary">Sign Up</a>
         </div>
       </ul>
