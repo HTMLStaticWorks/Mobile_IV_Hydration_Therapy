@@ -572,6 +572,7 @@ html[data-theme="dark"] .navbar {
 }
 
 /* Layout Utilities */
+.w-100 { width: 100% !important; }
 .mb-1 { margin-bottom: 0.5rem; }
 .mb-2 { margin-bottom: 1rem; }
 .mb-3 { margin-bottom: 1.5rem; }
