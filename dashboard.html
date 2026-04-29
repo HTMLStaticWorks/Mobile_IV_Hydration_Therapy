@@ -104,6 +104,27 @@
       font-size: 0.9rem;
       border: 2px solid var(--bg-border);
     }
+    
+    /* Dashboard Sections */
+    .dashboard-section {
+      display: none;
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    .dashboard-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -119,8 +140,12 @@
         HydraCore
       </a>
       
-      <div class="nav-actions d-flex align-items-center gap-3">
-        <a href="#" class="profile-btn d-flex align-items-center" aria-label="View Profile">
+      <div class="nav-actions d-flex align-items-center gap-2">
+        <button id="rtl-toggle" class="header-control-btn" aria-label="Toggle RTL">RTL</button>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <!-- Icon initialized by JS -->
+        </button>
+        <a href="#profile" class="profile-btn d-flex align-items-center" aria-label="View Profile" onclick="event.preventDefault(); switchSection('profile')">
           <div class="profile-avatar">JD</div>
         </a>
         <button id="sidebar-toggle" class="mobile-sidebar-toggle" aria-label="Toggle Sidebar">
@@ -133,31 +158,23 @@
   <div class="dashboard-layout">
     <aside class="sidebar">
       <div class="nav-sidebar">
-        <a href="#" class="nav-sidebar-link active">
+        <a href="#overview" class="nav-sidebar-link active" data-section="overview">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
           Overview
         </a>
-        <a href="#" class="nav-sidebar-link">
+        <a href="#booking" class="nav-sidebar-link" data-section="booking">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
           Book Appointment
         </a>
-        <a href="#" class="nav-sidebar-link">
+        <a href="#blends" class="nav-sidebar-link" data-section="blends">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="m3.34 19 9.39-9.39"></path><path d="M5 21 21 5"></path><path d="M19 3 5 17"></path><path d="m14 8 4 4"></path></svg>
           Vitamin Blends
         </a>
-        <a href="#" class="nav-sidebar-link">
+        <a href="#profile" class="nav-sidebar-link" data-section="profile">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           My Profile
         </a>
         
-        <!-- Theme Toggle in Sidebar -->
-        <button id="theme-toggle" class="nav-sidebar-link" style="background: none; border: none; width: 100%; cursor: pointer;">
-          <div class="d-flex align-items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            Switch Theme
-          </div>
-        </button>
-
         <a href="index.html" class="nav-sidebar-link mt-auto">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
           Logout
@@ -166,99 +183,186 @@
     </aside>
 
     <main class="main-content">
-      <div class="fade-up">
-        <div class="d-flex justify-content-between align-items-end mb-5">
-          <div>
-            <h1 class="mb-1">Hello, Jane Doe</h1>
-            <p class="text-secondary mb-0">You have 1 upcoming session this week.</p>
+      <!-- Overview Section -->
+      <section id="overview" class="dashboard-section active">
+        <div class="fade-up">
+          <div class="d-flex justify-content-between align-items-end mb-5">
+            <div>
+              <h1 class="mb-1">Hello, Jane Doe</h1>
+              <p class="text-secondary mb-0">You have 1 upcoming session this week.</p>
+            </div>
+            <button class="btn btn-primary" onclick="switchSection('booking')">Book New Drip</button>
           </div>
-          <button class="btn btn-primary">Book New Drip</button>
-        </div>
 
-        <div class="row g-4 mb-5">
-          <div class="col-md-4">
-            <div class="glass-card">
-              <span class="text-muted small">Next Session</span>
-              <h3 class="mt-2">March 26, 2:00 PM</h3>
-              <p class="mb-0 mt-3"><span class="status-badge status-upcoming">Waitlist Confirmed</span></p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="glass-card">
-              <span class="text-muted small">Total Hydrations</span>
-              <h3 class="mt-2">12 Sessions</h3>
-              <p class="mb-0 mt-3">Elite Status Member</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="glass-card">
-              <span class="text-muted small">Reward Points</span>
-              <h3 class="mt-2">2,450 pts</h3>
-              <p class="mb-0 mt-3 text-primary">Redeem for free add-on</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-lg-12">
-            <div class="glass-card mb-4">
-              <h4 class="mb-4">Recent Health Profile</h4>
-              <div class="row g-3">
-                <div class="col-md-3">
-                  <label class="text-muted small d-block mb-1">Blood Type</label>
-                  <p class="font-weight-bold">O Positive (Confirmed)</p>
-                </div>
-                <div class="col-md-3">
-                  <label class="text-muted small d-block mb-1">Known Allergies</label>
-                  <p class="font-weight-bold">None Reported</p>
-                </div>
-                <div class="col-md-3">
-                  <label class="text-muted small d-block mb-1">Primary Goal</label>
-                  <p class="font-weight-bold">Athletic Recovery & Focus</p>
-                </div>
-                <div class="col-md-3">
-                  <label class="text-muted small d-block mb-1">Weight</label>
-                  <p class="font-weight-bold">145 lbs</p>
-                </div>
+          <div class="row g-4 mb-5">
+            <div class="col-md-4">
+              <div class="glass-card">
+                <span class="text-muted small">Next Session</span>
+                <h3 class="mt-2">March 26, 2:00 PM</h3>
+                <p class="mb-0 mt-3"><span class="status-badge status-upcoming">Waitlist Confirmed</span></p>
               </div>
             </div>
-
-            <div class="glass-card">
-              <h4 class="mb-4">Quick Book Blend</h4>
-              <div class="row g-3">
-                 <div class="col-md-6">
-                    <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
-                       <div class="d-flex align-items-center gap-3">
-                          <div style="background: var(--primary); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                          </div>
-                          <div>
-                             <h6 class="mb-0">Immune Defense+ Mix</h6>
-                             <span class="small text-muted">Vit C, Zinc, B-Complex</span>
-                          </div>
-                       </div>
-                       <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
-                    </div>
-                 </div>
-                 <div class="col-md-6">
-                    <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
-                       <div class="d-flex align-items-center gap-3">
-                          <div style="background: var(--accent); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-                          </div>
-                          <div>
-                             <h6 class="mb-0">Executive Hydration</h6>
-                             <span class="small text-muted">Saline, Glutathione, NAD+</span>
-                          </div>
-                       </div>
-                       <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
-                    </div>
-                 </div>
+            <div class="col-md-4">
+              <div class="glass-card">
+                <span class="text-muted small">Total Hydrations</span>
+                <h3 class="mt-2">12 Sessions</h3>
+                <p class="mb-0 mt-3">Elite Status Member</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="glass-card">
+                <span class="text-muted small">Reward Points</span>
+                <h3 class="mt-2">2,450 pts</h3>
+                <p class="mb-0 mt-3 text-primary">Redeem for free add-on</p>
               </div>
             </div>
           </div>
+
+          <div class="row g-4">
+            <div class="col-lg-12">
+              <div class="glass-card mb-4">
+                <h4 class="mb-4">Recent Health Profile</h4>
+                <div class="row g-3">
+                  <div class="col-md-3">
+                    <label class="text-muted small d-block mb-1">Blood Type</label>
+                    <p class="font-weight-bold">O Positive (Confirmed)</p>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="text-muted small d-block mb-1">Known Allergies</label>
+                    <p class="font-weight-bold">None Reported</p>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="text-muted small d-block mb-1">Primary Goal</label>
+                    <p class="font-weight-bold">Athletic Recovery & Focus</p>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="text-muted small d-block mb-1">Weight</label>
+                    <p class="font-weight-bold">145 lbs</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass-card">
+                <h4 class="mb-4">Quick Book Blend</h4>
+                <div class="row g-3">
+                   <div class="col-md-6">
+                      <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
+                         <div class="d-flex align-items-center gap-3">
+                            <div style="background: var(--primary); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            </div>
+                            <div>
+                               <h6 class="mb-0">Immune Defense+ Mix</h6>
+                               <span class="small text-muted">Vit C, Zinc, B-Complex</span>
+                            </div>
+                         </div>
+                         <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
+                      </div>
+                   </div>
+                   <div class="col-md-6">
+                      <div class="p-3 d-flex align-items-center justify-content-between" style="background: var(--bg-soft); border-radius: var(--radius-md);">
+                         <div class="d-flex align-items-center gap-3">
+                            <div style="background: var(--accent); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                            </div>
+                            <div>
+                               <h6 class="mb-0">Executive Hydration</h6>
+                               <span class="small text-muted">Saline, Glutathione, NAD+</span>
+                            </div>
+                         </div>
+                         <button class="btn btn-sm btn-outline" style="padding: 0.4rem 1rem;">Select</button>
+                      </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Booking Section -->
+      <section id="booking" class="dashboard-section">
+        <div class="fade-up">
+          <h2 class="mb-4">Book an Appointment</h2>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="glass-card">
+                <h4>In-Home IV Therapy</h4>
+                <p class="text-secondary">A nurse will come to your location for a personalized treatment.</p>
+                <button class="btn btn-primary w-100 mt-3">Select Location</button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass-card">
+                <h4>Clinic Visit</h4>
+                <p class="text-secondary">Visit one of our state-of-the-art clinics for your hydration session.</p>
+                <button class="btn btn-outline w-100 mt-3">Find a Clinic</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blends Section -->
+      <section id="blends" class="dashboard-section">
+        <div class="fade-up">
+          <h2 class="mb-4">Our Vitamin Blends</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="glass-card text-center">
+                <div class="mb-3" style="color: var(--primary);"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <h5>Immunity Boost</h5>
+                <p class="small text-secondary">Vitamin C, Zinc, B-Complex</p>
+                <button class="btn btn-sm btn-outline mt-2">View Details</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="glass-card text-center">
+                <div class="mb-3" style="color: var(--accent);"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+                <h5>Beauty Glow</h5>
+                <p class="small text-secondary">Biotin, Glutathione, Vitamin C</p>
+                <button class="btn btn-sm btn-outline mt-2">View Details</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="glass-card text-center">
+                <div class="mb-3" style="color: #f59e0b;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
+                <h5>Energy Maximizer</h5>
+                <p class="small text-secondary">B12, MIC, L-Carnitine</p>
+                <button class="btn btn-sm btn-outline mt-2">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile" class="dashboard-section">
+        <div class="fade-up">
+          <h2 class="mb-4">My Profile</h2>
+          <div class="glass-card">
+            <form id="profile-form">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control" value="Jane" style="background: var(--bg-soft); border: 1px solid var(--bg-border); color: var(--text-primary); padding: 0.75rem; border-radius: var(--radius-md); width: 100%;">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-control" value="Doe" style="background: var(--bg-soft); border: 1px solid var(--bg-border); color: var(--text-primary); padding: 0.75rem; border-radius: var(--radius-md); width: 100%;">
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" value="jane.doe@example.com" style="background: var(--bg-soft); border: 1px solid var(--bg-border); color: var(--text-primary); padding: 0.75rem; border-radius: var(--radius-md); width: 100%;">
+                </div>
+                <div class="col-md-12 mt-4">
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -267,14 +371,49 @@
   <script src="assets/js/gsap.min.js"></script>
   <script src="assets/js/ScrollTrigger.min.js"></script>
   <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/animations.js"></script>
   <script>
+    function switchSection(sectionId) {
+      // Update Sections
+      const sections = document.querySelectorAll('.dashboard-section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+        if (section.id === sectionId) {
+          section.classList.add('active');
+        }
+      });
+
+      // Update Sidebar Links
+      const links = document.querySelectorAll('.nav-sidebar-link');
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === sectionId) {
+          link.classList.add('active');
+        }
+      });
+
+      // Close mobile sidebar if open
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      if (sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      // Update title (optional)
+      const title = sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+      document.title = `${title} | Patient Dashboard`;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const sidebarToggle = document.getElementById('sidebar-toggle');
       const sidebar = document.querySelector('.sidebar');
       const overlay = document.getElementById('sidebar-overlay');
       
+      // Sidebar Toggle Logic
       if (sidebarToggle && sidebar && overlay) {
         const toggleSidebar = () => {
           sidebar.classList.toggle('active');
@@ -299,12 +438,27 @@
           }
         });
 
-        // Close on escape key
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && sidebar.classList.contains('active')) {
             toggleSidebar();
           }
         });
+      }
+
+      // Sidebar Link Clicks
+      const sidebarLinks = document.querySelectorAll('.nav-sidebar-link[data-section]');
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const sectionId = link.getAttribute('data-section');
+          switchSection(sectionId);
+        });
+      });
+
+      // Handle Hash in URL on Load
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {
+        switchSection(hash);
       }
     });
   </script>
